@@ -1,0 +1,26 @@
+.available-topping{
+    margin-bottom: 1rem;
+}
+
+.slide-down{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

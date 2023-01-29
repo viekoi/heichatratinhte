@@ -1,0 +1,37 @@
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+span{
+  cursor: default;
+}
+
+.btn{
+  width: 100%;
+  padding: 0 2.8rem; 
+  border-radius: 2px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+body{
+  overflow-x: hidden;
+}

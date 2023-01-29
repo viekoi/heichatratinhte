@@ -1,0 +1,107 @@
+.login{
+    width: 350px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 110%;
+    right: -56px;
+    will-change: opacity,transform;
+    transform-origin: center;
+    animation: apear 0.4s ease;
+    box-shadow: 10px 10px 10px black;
+    z-index: 1;
+    background-color: white;
+    padding: 2rem;
+}
+
+@keyframes apear{
+    from{opacity: 0;
+        transform: scale(0);
+    }to{
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+.login::before{
+    content: "";
+    position: absolute;
+    right: 21%;
+    top: -4%;
+    border-color: transparent transparent white transparent;
+    border-style: solid ;
+    border-width: 8px 8px;
+    filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.login .header{
+    text-align: center;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    color: black;
+}
+
+.login .header h2{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.login .header p{
+    font-size: 1.4rem;
+    margin-top: 0.5px;
+}
+
+.login-form{
+    margin-bottom: 1.2rem;
+}
+
+.login-form input{
+    width: 100%;
+    padding: 14px 10px 14px 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.capcha{
+    padding-top: 0.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.capcha p{
+    font-size: 1.3rem;
+    color: rgb(158, 158, 158);
+}
+
+.capcha a{
+    font-size: 1.3rem;
+    display: inline;
+    color: #2962FF;
+}
+
+.button{
+    height: 4.2rem;
+   line-height: 4.2rem;
+   font-size: 1.3rem;
+   font-weight: 500;
+   background-color: #556B2F;
+   color: white;
+}
+
+.help{
+    margin-top: 1.2rem;
+}
+
+.help a{
+    display: inline;
+    font-size: 1.2rem;
+    color: #1B4EA0;
+}
+
+.help p {
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+    color: rgb(158, 158, 158); 
+}

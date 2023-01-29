@@ -1,0 +1,112 @@
+.main-banner{
+    padding-bottom: 3rem;
+    position: relative;
+}
+
+.main-banner :global(.banner){
+    flex: 0 0 100%;
+    max-width: 100% ;
+}
+
+
+.carousel-container{
+    width: 100%;
+    /* margin: 50px auto; */
+    overflow: hidden;
+   
+}
+
+.carousel-slide{
+    display: flex;
+    width: 100%;
+}
+
+.carousel-slide img{
+    width: 100%;
+}
+
+:global(#prevBtn){
+    position: absolute;
+    left: 5%;
+    top: 35%;
+    border: none;
+    background-color: white;
+    font-size: 3rem;
+    transform: translateY(-50%);
+    opacity: 0;
+     
+ }
+ 
+ :global(#nextBtn){
+     position: absolute;
+     right: 5%;
+     top: 35%;
+     border: none;
+     background-color: white;
+     font-size: 3rem;
+     transform: translateY(-50%);
+     opacity: 0;
+     
+ }
+
+.section-btn{
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-btn :global(.owl-dot) span{
+    margin: 5px;
+    height: 0.7rem;
+    width: 0.7rem;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.section-btn :global(.owl-dot.active) span{
+    outline: 0;
+    background: 0 0;
+    color: inherit;
+    padding: 2px;
+    font: inherit;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+.section-btn :global(.owl-dot){
+    outline: 0;
+    background: 0 0;
+    color: inherit;
+    border: none;
+    padding: 2px;
+    font: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.section-btn :global(.owl-dot.active){
+    outline: 0;
+    background: 0 0;
+    color: inherit;
+    padding: 2px;
+    font: inherit;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+

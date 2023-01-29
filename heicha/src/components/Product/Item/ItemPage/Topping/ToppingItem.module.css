@@ -1,0 +1,49 @@
+.topping-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+}
+
+.topping-item button{
+    background-color: white;
+    border: 1px solid #ccc;
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+}
+
+.check{
+    display: none;
+}
+
+:global(.active) .check{
+    display: inline;
+}
+
+.topping-item img{
+    width: 100%;
+}
+
+
+
+.dsc{
+    display: flex;
+    align-items: center;
+}
+
+.price{
+    padding-right: 1rem;
+}
+
+
+
+.topping-item span{
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+}
+

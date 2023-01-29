@@ -1,0 +1,66 @@
+.item{
+    text-align: center;
+    animation: popup ease 0.5s;
+    margin-bottom: 1rem ;
+}
+
+.image img{
+   max-width: 100%;
+   transform: scale(1);
+   transition: all ease 1s;
+   object-fit: cover;
+   height: 20rem;
+}
+
+.image img:hover{
+    transform: scale(1.1);
+ }
+
+
+
+@keyframes popup {
+    0%
+    {
+        transform: translateY(5%);
+    }
+    100%
+    {
+        transform: translateY(0%);
+    }
+}
+
+
+
+.name a{
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+
+}
+
+.price span{
+    color: red;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    font-weight: 600;
+}
+
+.price p{
+    color: #000;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    cursor: default;
+}
+
+
+
+sup{
+    text-decoration: underline;
+}
+
+
+
