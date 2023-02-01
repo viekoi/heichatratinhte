@@ -26,7 +26,7 @@ function ToppingItem(props) {
                 </div>
                 <div >
                     <span className={classes.price}>+{(props.item.price*1000).toLocaleString({ style: "currency", currency: "VND" })}<sup>đ</sup></span>
-                    <span className={classes.check}><i class="fa-solid fa-check"></i></span>
+                    <span className={classes.check}><i className="fa-solid fa-check"></i></span>
                 </div>
             </li>
     );

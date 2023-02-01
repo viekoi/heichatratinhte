@@ -1,0 +1,41 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: flex-end;
+    z-index: 999;
+    display: flex;
+}
+
+.input{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 38rem;
+    height:10rem;
+    transform: translate(-50%,-50%);
+    background-color: #556B2F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 1rem
+}
+
+.input input{
+    width: 80%;
+    height: 2.5rem;
+}
+
+.input h1{
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+    padding: 0;
+    color: white;
+    font-weight: 400;
+}
+

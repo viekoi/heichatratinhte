@@ -2,7 +2,7 @@
     position: absolute;
     min-width: 42rem;
     border: 1px solid #ccc;
-    top: 110%;
+    top: 100%;
     right: 0;
     will-change: opacity,transform;
     transform-origin: top right;
@@ -11,8 +11,9 @@
     z-index: 1;
     background-color: white;
     color: #53382c;
-    padding: 20px;
+    pad: 2rem 0 2rem 2rem;
     animation: apear 0.4s ease;
+    
 }
 
 @keyframes apear{
@@ -28,33 +29,39 @@
 .header-cart::before{
     content: "";
     position: absolute;
-    right: 4%;
-    top: -6%;
+    right: 7%;
+    top: -14px;
     border-color: transparent transparent white transparent;
     border-style: solid ;
     border-width: 8px 8px;
     filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.3));
 }
 
-.header{
-    padding-bottom: 8px;
-}
 
-.header p {
-    font-size: 1.8rem;
-    text-align: center;
-    font-weight: 400;
-}
+
 
 .in-cart{
+    
     padding-bottom: 20px;
+   
+
+    
+}
+
+.in-cart>div{
+    max-height: 50vh;
+    overflow-y: scroll;
 }
 
 .in-cart :global(.empty){
-    padding: 10px 0px 5px 0px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     text-align: center;
+    height: 100%;
+    padding: 2rem 2rem 0 2rem;
+ 
+    
+}
+.in-cart :global(.notempty){
+    padding: 2rem;
 }
 
 .in-cart :global(.empty) i{
@@ -68,6 +75,10 @@
     padding-bottom: 10px;
 }
 
+
+.total-price{
+    padding: 0 2rem 2rem 2rem;
+}
 
 .price-section{
     display: flex;
@@ -98,6 +109,28 @@
 .total-price a{
     color: #fff;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0,0.5);
+  }
+  
+  /* Handle on hover
+  ::-webkit-scrollbar-thumb:hover {
+    background:rgba(0, 0, 0,0.8);
+  } */
+
+
 
 
 

@@ -39,7 +39,7 @@ h1{
 
 }
 
-.available-type>ul>li>a{
+.available-type>ul>li>span{
     display: block;
     padding: 0.5rem 2rem;
     font-size: 1.4rem;
