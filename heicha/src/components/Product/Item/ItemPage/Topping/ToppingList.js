@@ -8,7 +8,7 @@ function ToppingList(props) {
 
 
 
-    const toppingList = props.topping.map((item) => {
+    const toppingList = props.availableToppings.map((item) => {
         return (
            <ToppingItem key ={item.id} item={item} onDispatchItemAction={props.onDispatchItemAction} ></ToppingItem>
         )

@@ -8,41 +8,18 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
-    const existingCartItemIndexHandler = () => {
-        let index = -1
-        for (let i = 0; i < state.items.length; i++) {
-            if (state.items[i].id === action.item.id && state.items[i].toppings.length === action.item.toppings.length && state.items[i].baseSize === action.item.baseSize) {
-                if (state.items[i].toppings.length === 0 && action.item.toppings.length === 0) {
 
-                    return i
-                } else {
-                    for (let j = 0; j < state.items[i].toppings.length; j++) {
 
-                        if (state.items[i].toppings[j].id !== action.item.toppings[j].id) {
-
-                            break;
-                        } else {
-
-                            return index = i;
-
-                        }
-                    }
-                }
-            }
-        }
-        return index;
-    }
+    const existingCartItemIndex = state.items.findIndex(
+        (item) => item.cartItemDsc === action.item.cartItemDsc
+      );
+        
 
 
     if (action.type === 'ADD') {
 
         const updatedTotalAmount =
             state.totalAmount + action.item.totalPrice * action.item.totalAmount;
-        // const existingCartItemIndex = state.items.findIndex(
-        //   (item) => item.id === action.item.id
-        // );
-
-        const existingCartItemIndex = existingCartItemIndexHandler();
         const existingCartItem = state.items[existingCartItemIndex];
         let updatedItems;
 
@@ -63,10 +40,6 @@ const cartReducer = (state, action) => {
         };
     }
     if (action.type === 'REMOVE') {
-        // const existingCartItemIndex = state.items.findIndex(
-        //     (item) => item.id === action.id
-        // );
-        const existingCartItemIndex = existingCartItemIndexHandler();
         const existingItem = state.items[existingCartItemIndex];
         const updatedTotalAmount = state.totalAmount - existingItem.totalPrice;
         let updatedItems;
@@ -87,7 +60,6 @@ const cartReducer = (state, action) => {
 
     if (action.type === 'UPDATE') {
         console.log(action.item)
-        const existingCartItemIndex = existingCartItemIndexHandler();
         const existingItem = state.items[existingCartItemIndex];
         let updatedTotalAmount;
 

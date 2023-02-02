@@ -34,7 +34,7 @@ function HeaderCart() {
                         {cartCtx.items.length !== 0 && <div className="notempty">
                             <ul>
                                 {cartCtx.items.map((item) => {
-                                    return <HeaderCartItem onCartItemUpdateHandler={cartItemUpdateHandler} onCartItemAddHandler={cartItemAddHandler.bind(null,item)} onCartItemRemoveHandler={cartItemRemoveHandler.bind(null,item)}  item={item} key={item.dsc}></HeaderCartItem>
+                                    return <HeaderCartItem onCartItemUpdateHandler={cartItemUpdateHandler} onCartItemAddHandler={cartItemAddHandler.bind(null,item)} onCartItemRemoveHandler={cartItemRemoveHandler.bind(null,item)}  item={item} key={item.cartItemDsc}></HeaderCartItem>
                                 })}
                             </ul>
                         </div>}

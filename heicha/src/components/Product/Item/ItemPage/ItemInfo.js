@@ -1,15 +1,30 @@
 import classes from './ItemInfo.module.css'
 import { useLocation } from 'react-router-dom';
-import React, {useEffect,useReducer,useContext} from 'react';
+import React, {useReducer,useContext,useState} from 'react';
 import AvailableTopping from './Topping/AvailableTopping';
 import CartContext from '../../../../store/cart-context';
 
 function ItemInfo() {
+
+
+    const[activeSize,setActiveSize] = useState("M")
     const location = useLocation()
+
+    const setActiveSizeHandler = (e)=>{
+        if(e.target.textContent ==="M"){
+            setActiveSize("M")
+            setBasePriceHandler(e.target.textContent)
+        }else{
+            setActiveSize("L")
+            setBasePriceHandler(e.target.textContent)
+        }
+    }
+
+
     const itemDefaultState = {
         ...location.state,
         size:location.state.baseSize,
-        dsc:location.state.baseSize,
+        cartItemDsc:location.state.baseSize,
         toppings:[],
         basePrice:location.state.listedPrice[0],
         totalPrice:location.state.listedPrice[0],
@@ -20,7 +35,6 @@ function ItemInfo() {
         dispatchItemAction({ type:'setBasePrice',context:context});
       };
 
-   
 
     const itemReducer = (state,action) =>{
         if(action.type==='setBasePrice'){
@@ -28,20 +42,20 @@ function ItemInfo() {
                 const updatedItem ={...state,basePrice:state.listedPrice[0]}
                 const updatedTotalPrice = updatedItem.basePrice + updatedItem.toppings.reduce((accumulator, currentValue) => accumulator + currentValue.price,
                 0)
-                const dsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
+                const cartItemDsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
                 updatedItem.totalPrice = updatedTotalPrice
                 updatedItem.baseSize = action.context
-                updatedItem.dsc= dsc 
+                updatedItem.cartItemDsc= cartItemDsc 
                 return updatedItem
             }     
             if(action.context==='L')
             {
                 const updatedItem ={...state,basePrice:state.listedPrice[1]}
                 const updatedTotalPrice = updatedItem.basePrice + updatedItem.toppings.reduce((accumulator, currentValue) => accumulator + currentValue.price,0)
-                const dsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
+                const cartItemDsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
                 updatedItem.totalPrice = updatedTotalPrice
                 updatedItem.baseSize = action.context
-                updatedItem.dsc= dsc 
+                updatedItem.cartItemDsc= cartItemDsc 
                 return updatedItem
             }
 
@@ -53,9 +67,9 @@ function ItemInfo() {
                 toppings:updatedToppings
             }
             const updatedTotalPrice = updatedItem.basePrice + updatedItem.toppings.reduce((accumulator, currentValue) => accumulator + currentValue.price,0)
-            const dsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
+            const cartItemDsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
             updatedItem.totalPrice = updatedTotalPrice
-            updatedItem.dsc= dsc 
+            updatedItem.cartItemDsc= cartItemDsc 
             return updatedItem
         }else if(action.type==='removeTopping'){
             const updatedToppings =  state.toppings.filter(topping => topping !== action.topping);
@@ -64,9 +78,9 @@ function ItemInfo() {
                 toppings:updatedToppings
             }
             const updatedTotalPrice = updatedItem.basePrice + updatedItem.toppings.reduce((accumulator, currentValue) => accumulator + currentValue.price,0)
-            const dsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
+            const cartItemDsc =  updatedItem.toppings.reduce((accumulator,currentValue)=>accumulator +" / "+ currentValue.name,updatedItem.baseSize)
             updatedItem.totalPrice = updatedTotalPrice
-            updatedItem.dsc= dsc 
+            updatedItem.cartItemDsc= cartItemDsc 
             return updatedItem
         }
 
@@ -83,20 +97,6 @@ function ItemInfo() {
         });
       };
 
-
-    useEffect(() => {
-        const sizeBtn = document.querySelector(`.${classes.size} ul`)
-        sizeBtn.addEventListener("click", (e) => {
-            const curActiveBtn = document.querySelector(`.${classes.active}`)
-            const clickedBtn = e.target.closest("button")
-            if (clickedBtn && curActiveBtn) {
-                setBasePriceHandler(clickedBtn.textContent)
-                curActiveBtn.classList.remove(`${classes.active}`)
-                clickedBtn.classList.add(`${classes.active}`)
-            }
-        })
-    }, []);
-
     return (
         <div className="grid wide">
             <div className={classes[`item-info`]}>
@@ -106,16 +106,32 @@ function ItemInfo() {
                         <img src={itemState.imgUrl} alt="" />
                     </div>
                     <div className={`l-4  m-6 c-12 ${classes[`buy-section`]}`}>
-                        <div className={classes.size}>
-                            <span>Size:
-                                <ul>
-                                    {itemState.listedPrice.length >= 1 && <li><button className={classes.active}>M</button></li>}
-                                    {itemState.listedPrice.length === 2 && <li><button >L</button></li>}
-                                </ul>
-                            </span>
-                            <span className={classes.price}>{(itemState.totalPrice * 1000).toLocaleString({ style: "currency", currency: "VND" })}<sup>đ</sup></span>
+                        <div className={classes.customize}>
+                                <div className={`${classes.size} l-4 m-4 c-4`}>
+                                    <span>size:</span>
+                                    <ul>
+                                        {itemState.listedPrice.length >= 1 && <li><button className={activeSize === "M"?`${classes.active}`:""} onClick={setActiveSizeHandler}>M</button></li>}
+                                        {itemState.listedPrice.length === 2 && <li><button className={activeSize === "L"?`${classes.active}`:""}  onClick={setActiveSizeHandler}>L</button></li>}
+                                    </ul>
+                                </div>
+                                
+                                {/* <span className={classes.price}>{(itemState.totalPrice * 1000).toLocaleString({ style: "currency", currency: "VND" })}<sup>đ</sup></span> */}
+                            
+                                <div className={`${classes.sweet} l-4 m-4 c-4`}>
+                                    <span>Độ Ngọt ngào:</span>
+                                    <ul>
+                                        <li><button></button></li>
+                                    </ul>
+                                </div>
+                                <div className={`${classes.ice} l-4 m-4 c-4`}>
+                                    <span>Lượng Đá:</span>
+                                    <ul>
+                                        <li><button></button></li>
+                                    </ul>
+                                </div>
+                           
                         </div>
-                        <AvailableTopping onDispatchItemAction={dispatchItemAction}></AvailableTopping>
+                        <AvailableTopping availableToppings={itemDefaultState.availableToppings} onDispatchItemAction={dispatchItemAction}></AvailableTopping>
                         <button className='btn' onClick={addToCartHandler}>Thêm Vào GiỎ</button>
                     </div>
                 </div>

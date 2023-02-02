@@ -1,10 +1,10 @@
 import classes from './ToppingItem.module.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
 
 function ToppingItem(props) {
    const toppingHander = (selected)=>{
-        if(selected == false){
+        if(selected === false){
             props.onDispatchItemAction({ type:'addTopping',topping:props.item})
         }else{
             props.onDispatchItemAction({ type:'removeTopping',topping:props.item})

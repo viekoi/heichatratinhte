@@ -1,5 +1,4 @@
 .item-info{
-    padding: 10rem 0;
     min-height: calc(100vh - 3rem - 9.5rem);
 }
 
@@ -16,10 +15,7 @@
     
 }
 
-.img {
-    width: 35%;
 
-}
 
 .img img{
     max-width: 100%;
@@ -28,7 +24,6 @@
 }
 
 .buy-section{
-    width: 35%;
     padding: 0 2rem;
 }
 
@@ -53,21 +48,29 @@
     width: 100%;
 }
 
-.size{
-    text-align: left;
+.customize{
+    text-align: center;
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.size ul{
+.customize>div{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.customize ul{
     display: inline-block;
 }
-.size li{
+.customize li{
     display: inline-block;
 }
 
-.size button{
+.customize button{
     background-color: white;
     border: 1px solid #ccc;
     padding: 0.5rem;
@@ -85,9 +88,17 @@
     font-weight: 600;
 }
 
-.size .active{
+.customize .active{
     background-color: #808000;
     color: #fff;
     border: 0px;
+}
+
+.sweet{
+    justify-content: center;
+}
+
+.ice{
+    justify-content: flex-end;
 }
 

@@ -18,7 +18,7 @@ function HeaderCartItem(props) {
                 </div>
                 <div className={classes.right}>
                     <h4>{props.item.name}</h4>
-                    <span className={classes.dsc}>{props.item.dsc}</span>
+                    <span className={classes.dsc}>{props.item.cartItemDsc}</span>
                     <div className={classes.form} > 
                         <span><button onClick={props.onCartItemRemoveHandler}>-</button><input onClick={setModalHandler} type="button" value={props.item.totalAmount} /><button onClick={props.onCartItemAddHandler}>+</button> </span>
                         <span>{(props.item.totalPrice *1000 * props.item.totalAmount ).toLocaleString({ style: "currency", currency: "VND" })} <sup>đ</sup></span>
