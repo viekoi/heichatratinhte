@@ -2,12 +2,14 @@ import classes from './HeaderCart.module.css'
 import React, { useContext } from 'react';
 import CartContext from '../../../store/cart-context';
 import HeaderCartItem from './HeaderCartItem';
+import {useNavigate} from 'react-router-dom'
 
 
 
 
 
 function HeaderCart() {
+    const navigate = useNavigate()
     const cartCtx = useContext(CartContext)
 
     const cartItemRemoveHandler = (item) => {
@@ -47,7 +49,7 @@ function HeaderCart() {
                         <span className="left">TỔNG TIỀN:</span>
                         <span className="right">{(cartCtx.totalAmount * 1000).toLocaleString({ style: "currency", currency: "VND" })}đ</span>
                     </div>
-                    <button className="btn">
+                    <button className="btn" onClick={()=>{navigate("/Cart")}}>
                         XEM GIỎ HÀNG
                     </button>
                 </div>

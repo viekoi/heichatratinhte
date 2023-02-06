@@ -14,11 +14,24 @@ function Modal(props) {
 
     const setCheckedValueHandler = (e)=>{
         setCheckedValue(e.target.value*1)
-        setSugarPercentHandler(e.target.value*1)
+        if(props.actionType==="setSugar"){
+            
+            setSugarPercentHandler(e.target.value*1)
+
+        }else{
+
+            setIcePercentHandler(e.target.value*1)
+
+        }
+
 
     }
     const setSugarPercentHandler= (value)=>{
         props.onDispatchItemAction({ type:'setSugarPercent',value:value})
+    }
+
+    const setIcePercentHandler= (value)=>{
+        props.onDispatchItemAction({ type:'setIcePercent',value:value})
     }
     
     const formSubmmitHandler = (e)=>{
@@ -32,7 +45,7 @@ function Modal(props) {
                 <form className="row" onSubmit={formSubmmitHandler}>
                     <div className='l-6 m-6 c-12'>
                         <label htmlFor="">
-                            <input type="radio" name="sugar" onChange={setCheckedValueHandler} value={0}  checked={checkedValue === 0}/>
+                            <input type="radio" name="percentage" onChange={setCheckedValueHandler} value={0}  checked={checkedValue === 0}/>
                             0%
                         </label>
 
@@ -40,7 +53,7 @@ function Modal(props) {
 
                     <div className='l-6 m-6 c-12'>
                         <label htmlFor="">
-                            <input type="radio"  name="sugar" onChange={setCheckedValueHandler} value={30} checked={checkedValue=== 30} />
+                            <input type="radio"  name="percentage" onChange={setCheckedValueHandler} value={30} checked={checkedValue=== 30} />
                             30%
                         </label>
 
@@ -48,21 +61,21 @@ function Modal(props) {
 
                     <div className='l-6 m-6 c-12'>
                         <label htmlFor="">
-                            <input type="radio"  name="sugar" onChange={setCheckedValueHandler} value={50} checked={checkedValue=== 50} />
+                            <input type="radio"  name="percentage" onChange={setCheckedValueHandler} value={50} checked={checkedValue=== 50} />
                             50%
                         </label>
 
                     </div>
                     <div className='l-6 m-6 c-12'>
                         <label htmlFor="">
-                            <input type="radio" name="sugar" onChange={setCheckedValueHandler} value={70}  checked={checkedValue===70} />
+                            <input type="radio" name="percentage" onChange={setCheckedValueHandler} value={70}  checked={checkedValue===70} />
                             70%
                         </label>
 
                     </div>
                     <div className='l-6 m-6 c-12'>
                         <label htmlFor="">
-                            <input type="radio"  name="sugar" onChange={setCheckedValueHandler} value={100} checked={checkedValue=== 100}/>
+                            <input type="radio"  name="percentage" onChange={setCheckedValueHandler} value={100} checked={checkedValue=== 100}/>
                             100%
                         </label>
 
@@ -81,7 +94,7 @@ const portalElement = document.getElementById('overlays');
 function ModalSelect(props) {
     return (
         <>
-            {ReactDOM.createPortal(<Modal onDispatchItemAction={props.onDispatchItemAction} onClick={props.onClick} item={props.item} value={props.value} />, portalElement)}
+            {ReactDOM.createPortal(<Modal onDispatchItemAction={props.onDispatchItemAction} actionType={props.actionType} onClick={props.onClick} item={props.item} value={props.value} />, portalElement)}
         </>
     );
 }

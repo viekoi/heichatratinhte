@@ -12,6 +12,8 @@
 }
 
 
+
+
 .logo img{
    width: 20rem;
 }
@@ -45,18 +47,7 @@
     width: 100%;
    
 }
-::-webkit-input-placeholder {
-    font-style: italic;
- }
- :-moz-placeholder {
-    font-style: italic;  
- }
- ::-moz-placeholder {
-    font-style: italic;  
- }
- :-ms-input-placeholder {  
-    font-style: italic; 
- }
+
 
 .form button{
     border: none;
@@ -90,22 +81,26 @@
 
     
 }
+.lv-0>ul>li>a{
+    display: block;
+    padding: 4rem 3rem;
+    color: inherit;
+}
 
-.lv-0>ul>li:not(.cart):not(.user):hover{
+.lv-0>ul>li:not(.cart):hover{
     background-color: 	#556B2F;
     color: #fff;
 }
+
+
+
 
 .lv-0>ul>li:hover .lv-1{
     opacity: 1;
     transform: scale(1);
 }
 
-.lv-0>ul>li>a{
-    display: block;
-    padding: 4rem 3rem;
-    color: #000;
-}
+
 
 .lv-1{
     position: absolute;
