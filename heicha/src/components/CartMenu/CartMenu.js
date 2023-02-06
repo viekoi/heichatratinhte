@@ -4,8 +4,22 @@ import CartContext from '../../store/cart-context';
 import CartMenuItem from './CartMenuItem';
 function CartMenu() {
     const cartCtx = useContext(CartContext)
+
+    const cartItemRemoveHandler = (item) => {
+        cartCtx.removeItem(item);
+      };
+    
+      const cartItemAddHandler = (item) => {
+        cartCtx.addItem({ ...item, totalAmount: 1 });
+      };
+
+      const cartItemUpdateHandler = (item,totalAmount) => {
+        cartCtx.updateItem({ ...item, totalAmount:totalAmount });
+      };
+
+
     const cartMenuItemList=cartCtx.items.map((item)=>{
-        return<CartMenuItem item={item} key={item.cartItemDsc}></CartMenuItem>
+        return<CartMenuItem onCartItemUpdateHandler={cartItemUpdateHandler} item={item} key={item.cartItemDsc+item.id} onCartItemAddHandler={cartItemAddHandler.bind(null,item)} onCartItemRemoveHandler={cartItemRemoveHandler.bind(null,item)}></CartMenuItem>
     })
     return ( 
         <div className={classes[`cart-menu`]}>
@@ -22,8 +36,11 @@ function CartMenu() {
                     <div className={classes.st}>Số Tiền</div>
                     <div className={classes.tt}>Thao Tác</div>
                 </div>
-                <div className="">
+                <div className={classes.list}>
                     {cartMenuItemList}
+                </div>
+                <div className={classes.del}>
+                    <button className="btn">Xóa Lựa Chọn</button>
                 </div>
             </div>
                 

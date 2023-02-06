@@ -4,7 +4,7 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0 ,0,0.05);
     border-radius: 0.125rem;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 1.4rem;
     margin-bottom: 1.2rem;
     color: #888;
     padding: 0 2rem;
@@ -73,3 +73,30 @@
     max-width: 100%;
     height: 10rem;
 }
+
+.tt button{
+    border:  none;
+    background-color: transparent;
+
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+.sl button{
+    border:none;
+    color: rgb(255, 0, 0);
+    background-color: transparent;
+    width: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.sl input{
+    background-color: transparent;
+    border: 1px solid #000;
+    height: 2rem;
+    width: 2rem;
+}
+

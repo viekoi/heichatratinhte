@@ -63,6 +63,13 @@ input[type=number] {
 
 }
 
+.header-cart-item input{
+    background-color: transparent;
+    border: 1px solid #000;
+    height: 2rem;
+    width: 2rem;
+}
+
 .dsc{
     color: rgba(0, 0, 0,0.5);
     font-size: 1rem;

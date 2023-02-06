@@ -1,31 +1,41 @@
 import classes from './ModalSelect.module.css'
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 
 
 function Modal(props) {
+    const checkedData = [{value:0},{value:30},{value:50},{value:70},{value:100}]
+
+
     const stopPropagationHandler = (e) => {
         e.stopPropagation()
     }
 
 
-    const[checkedValue,setCheckedValue] = useState(props.value)
+    const[checkedValues,setCheckedValues] = useState([])
 
-    const setCheckedValueHandler = (e)=>{
-        setCheckedValue(e.target.value*1)
+    useEffect(()=>{
+        setCheckedValues(checkedData)
+    },[])
+
+    const channgeHandler=(e)=>{
+        const {value,checked} = e.target    
+        let tempCheckValues = checkedValues.map((checkValue)=>  {
+             return (checkValue.value === value*1 ? {...checkValue,isChecked:checked,}:{...checkValue,isChecked:!checked,}) })
+        setCheckedValues(tempCheckValues)
         if(props.actionType==="setSugar"){
             
-            setSugarPercentHandler(e.target.value*1)
+            setSugarPercentHandler(value*1)
 
         }else{
 
-            setIcePercentHandler(e.target.value*1)
+            setIcePercentHandler(value*1)
 
         }
-
-
     }
+
+    
     const setSugarPercentHandler= (value)=>{
         props.onDispatchItemAction({ type:'setSugarPercent',value:value})
     }
@@ -43,43 +53,17 @@ function Modal(props) {
             <div className={classes.select} onClick={stopPropagationHandler}>
                 <h1>Chọn độ ngọt ngào</h1>
                 <form className="row" onSubmit={formSubmmitHandler}>
-                    <div className='l-6 m-6 c-12'>
-                        <label htmlFor="">
-                            <input type="radio" name="percentage" onChange={setCheckedValueHandler} value={0}  checked={checkedValue === 0}/>
-                            0%
-                        </label>
-
-                    </div>
-
-                    <div className='l-6 m-6 c-12'>
-                        <label htmlFor="">
-                            <input type="radio"  name="percentage" onChange={setCheckedValueHandler} value={30} checked={checkedValue=== 30} />
-                            30%
-                        </label>
-
-                    </div  >
-
-                    <div className='l-6 m-6 c-12'>
-                        <label htmlFor="">
-                            <input type="radio"  name="percentage" onChange={setCheckedValueHandler} value={50} checked={checkedValue=== 50} />
-                            50%
-                        </label>
-
-                    </div>
-                    <div className='l-6 m-6 c-12'>
-                        <label htmlFor="">
-                            <input type="radio" name="percentage" onChange={setCheckedValueHandler} value={70}  checked={checkedValue===70} />
-                            70%
-                        </label>
-
-                    </div>
-                    <div className='l-6 m-6 c-12'>
-                        <label htmlFor="">
-                            <input type="radio"  name="percentage" onChange={setCheckedValueHandler} value={100} checked={checkedValue=== 100}/>
-                            100%
-                        </label>
-
-                    </div>
+                    {checkedValues.map((value,index)=>{
+                        return(
+                        <div key={index} className='l-6 m-6 c-12'>
+                            <label htmlFor="">
+                                <input type="radio" name="percentage" onChange={channgeHandler} value={value.value}  checked={(value?.isChecked || false)||value.value===props.value}/>
+                                {value.value}%
+                            </label>
+    
+                        </div>
+                        )
+                    })}
                 </form>
             </div>
         </div>

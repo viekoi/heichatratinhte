@@ -19,19 +19,6 @@ a{
   cursor: pointer;
 }
 
-span{
-  cursor: default;
-}
 
-.btn{
-  width: 100%;
-  padding: 0 2.8rem; 
-  border-radius: 2px;
-  border: none;
-  text-transform: uppercase;
-  cursor: pointer;
-}
 
-body{
-  overflow-x: hidden;
-}
+

@@ -5,6 +5,7 @@
 .container{
     min-height: calc(100vh - 3rem - 9.5rem);
     border-radius: 1rem;
+    overflow-y: scroll;
 
 }
 
@@ -75,3 +76,24 @@
     max-width: 100%;
     height: 10rem;
 }
+
+.list{
+    height: calc(60vh - 3rem - 9.5rem);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.del {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.del button{
+    width: 15%;
+    background-color: orange;
+    color: white;
+    height: 5rem;
+}
+
